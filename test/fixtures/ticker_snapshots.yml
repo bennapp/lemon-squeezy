@@ -1,0 +1,23 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  symbol: MyString
+  volume: 1
+  volatility: MyString
+  short_float: 1.5
+  short_ratio: 1.5
+  shares_float: MyString
+  float: MyString
+  rsi: 1.5
+  full_payload: 
+
+two:
+  symbol: MyString
+  volume: 1
+  volatility: MyString
+  short_float: 1.5
+  short_ratio: 1.5
+  shares_float: MyString
+  float: MyString
+  rsi: 1.5
+  full_payload: 

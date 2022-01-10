@@ -1,0 +1,2 @@
+class TickerSnapshot < ApplicationRecord
+end
