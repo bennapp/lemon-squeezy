@@ -3,11 +3,16 @@
 </br>
 </br>
 
+<div style="font-size:24px;">Current Squeezoor:</div>
+<div style="font-family: monospace;white-space: pre-line;"><%= TickerSnapshot.instance_method(:squeeze_score).source.gsub("def squeeze_score\n", '').gsub('end', '') %></div>
+</br>
+
 <table> 
   <thead>
     <tr>
       <th>Symbol</th>
-      <th>Squeeze Score: <%= TickerSnapshot.instance_method(:squeeze_score).source.gsub('def squeeze_score', '').gsub('end', '') %></th>
+      <th>Squeezoor 🍋💦💰</th>
+      <th>Date</th>
       <th>Short Ratio</th>
       <th>Short Float</th>
       <th>RSI (14)</th>
@@ -19,7 +24,8 @@
     <% @ticker_info.each do |ti| %>
       <tr>
         <td style="font-weight:bold;"><%= ti.symbol %></td>
-        <td style="font-weight:bold;"><%= ti.squeeze_score %></td>
+        <td style="font-weight:bold;"><%= ti.squeeze_score.truncate(2) %></td>
+        <td><%= ti.created_at.to_date %></td>
         <td><%= ti.short_ratio %></td>
         <td><%= ti.short_float %></td>
         <td><%= ti.rsi %></td>
