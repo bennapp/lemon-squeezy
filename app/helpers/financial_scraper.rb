@@ -1,8 +1,7 @@
 require 'nokogiri'
 require 'open-uri'
-require 'pry'
 
-class Scraper
+class FinancialScraper
     def scrape
         hsi_url = "https://www.highshortinterest.com/"
         hsi_html = URI.open(hsi_url)
