@@ -16,9 +16,12 @@
 
 table {
   table-layout: fixed;
+  border-spacing: 0px;
 }
 
 th, td {
   padding: 4px;
   text-align: center;
+  border: 1px solid black;
+  box-sizing: border-box;
 }
