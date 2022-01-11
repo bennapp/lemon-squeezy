@@ -1,0 +1,25 @@
+<div style="font-size:72px;text-align: center;">💦🍋💦💦LEMON SQUEEZY💦💦🍋💦</div>
+<div style="font-size:32px;text-align: center;">SQUEEZE THE JUICE</div>
+</br>
+</br>
+
+<table> 
+  <thead>
+    <tr>
+      <th>Symbol</th>
+      <% @ticker_info.first.full_payload.keys.each do |key| %>
+        <th><%= key %></th>
+      <% end %>
+    </tr>
+  </thead>
+  <tbody>
+    <% @ticker_info.each do |ti| %>
+      <tr>
+        <td><%= ti.symbol %></td>
+        <% ti.full_payload.each do |k, v| %>
+          <td><%= v %></td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
