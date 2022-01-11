@@ -1,4 +1,4 @@
-<div style="font-size:72px;text-align: center;">💦🍋💦💦LEMON SQUEEZY💦💦🍋💦</div>
+<div style="font-size:72px;text-align: center;">🍋💦💰LEMON SQUEEZY🍋💦💰</div>
 <div style="font-size:32px;text-align: center;">SQUEEZE THE JUICE</div>
 </br>
 </br>
@@ -7,6 +7,34 @@
   <thead>
     <tr>
       <th>Symbol</th>
+      <th>Squeeze Score: <%= TickerSnapshot.instance_method(:squeeze_score).source.gsub('def squeeze_score', '').gsub('end', '') %></th>
+      <th>Short Ratio</th>
+      <th>Short Float</th>
+      <th>RSI (14)</th>
+      <th>Volume</th>
+      <th>Volatility</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @ticker_info.each do |ti| %>
+      <tr>
+        <td style="font-weight:bold;"><%= ti.symbol %></td>
+        <td style="font-weight:bold;"><%= ti.squeeze_score %></td>
+        <td><%= ti.short_ratio %></td>
+        <td><%= ti.short_float %></td>
+        <td><%= ti.rsi %></td>
+        <td><%= ti.volume %></td>
+        <td><%= ti.volatility %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+</br>
+<h1>All available data for inspection purposes</h1>
+<table>
+  <thead>
+    <tr>
       <% @ticker_info.first.full_payload.keys.each do |key| %>
         <th><%= key %></th>
       <% end %>
@@ -15,7 +43,6 @@
   <tbody>
     <% @ticker_info.each do |ti| %>
       <tr>
-        <td><%= ti.symbol %></td>
         <% ti.full_payload.each do |k, v| %>
           <td><%= v %></td>
         <% end %>

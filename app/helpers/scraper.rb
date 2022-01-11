@@ -30,13 +30,15 @@ class Scraper
           ts = ::TickerSnapshot.new
           ts.full_payload = metric_lookup
           ts.symbol = ticker
-          ts.volume = metric_lookup["Volume"]
+          ts.volume = metric_lookup["Volume"].gsub(',', '').to_i
           ts.volatility = metric_lookup["Volatility"].gsub('%', '').to_f
           ts.short_float = metric_lookup["Short Float"].gsub('%', '').to_f
           ts.short_ratio = metric_lookup["Short Ratio"].to_f
-          ts.shares_float = metric_lookup["Shs Float"]
+          ts.shares_float = metric_lookup["Shs Float"].gsub('M', '').to_i * 1_000_000
           ts.rsi = metric_lookup["RSI (14)"].to_f
           ts.save!
+
+          sleep 1
         end
     end
 end

@@ -18,11 +18,10 @@ ActiveRecord::Schema.define(version: 2022_01_10_211100) do
   create_table "ticker_snapshots", force: :cascade do |t|
     t.string "symbol"
     t.integer "volume"
-    t.string "volatility"
+    t.float "volatility"
     t.float "short_float"
     t.float "short_ratio"
-    t.string "shares_float"
-    t.string "float"
+    t.integer "shares_float"
     t.float "rsi"
     t.json "full_payload"
     t.datetime "created_at", precision: 6, null: false
