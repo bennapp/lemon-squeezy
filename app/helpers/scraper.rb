@@ -14,7 +14,9 @@ class Scraper
             tr.search('th, td')
         end
 
-        tickers = cells.map { |cell| cell[0].children.first.text }
+        tickers = cells
+            .map { |cell| cell[0].children.first.text }
+            .select { |ticker| !ticker.include?('google_ad_client') }
 
         p tickers
     end
