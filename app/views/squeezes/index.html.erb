@@ -25,7 +25,7 @@
       <tr>
         <td style="font-weight:bold;"><%= ti.symbol %></td>
         <td style="font-weight:bold;"><%= ti.squeeze_score.truncate(2) %></td>
-        <td><%= ti.created_at.to_date %></td>
+        <td><%= ti.created_at.in_time_zone("Mountain Time (US & Canada)").to_date %></td>
         <td><%= ti.short_ratio %></td>
         <td><%= ti.short_float %></td>
         <td><%= ti.rsi %></td>
@@ -41,6 +41,7 @@
 <table>
   <thead>
     <tr>
+      <th>Symbol</th>
       <% @ticker_info.first.full_payload.keys.each do |key| %>
         <th><%= key %></th>
       <% end %>
@@ -49,6 +50,7 @@
   <tbody>
     <% @ticker_info.each do |ti| %>
       <tr>
+        <td style="font-weight:bold;"><%= ti.symbol %></td>
         <% ti.full_payload.each do |k, v| %>
           <td><%= v %></td>
         <% end %>

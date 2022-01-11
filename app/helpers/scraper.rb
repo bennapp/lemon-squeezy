@@ -42,5 +42,3 @@ class Scraper
         end
     end
 end
-
-Scraper.new.scrape
