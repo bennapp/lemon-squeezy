@@ -23,7 +23,7 @@
   <tbody>
     <% @ticker_info.each do |ti| %>
       <tr>
-        <td style="font-weight:bold;"><%= ti.symbol %></td>
+        <td style="font-weight:bold;"><a href="https://finance.yahoo.com/quote/<%= ti.symbol %>/"><%= ti.symbol %></a></td>
         <td style="font-weight:bold;"><%= ti.squeeze_score.truncate(2) %></td>
         <td><%= ti.created_at.in_time_zone("Mountain Time (US & Canada)").to_date %></td>
         <td><%= ti.short_ratio %></td>
@@ -50,7 +50,7 @@
   <tbody>
     <% @ticker_info.each do |ti| %>
       <tr>
-        <td style="font-weight:bold;"><%= ti.symbol %></td>
+      <td style="font-weight:bold;"><a href="https://finance.yahoo.com/quote/<%= ti.symbol %>/"><%= ti.symbol %></a></td>
         <% ti.full_payload.each do |k, v| %>
           <td><%= v %></td>
         <% end %>
