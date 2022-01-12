@@ -3,15 +3,16 @@
 </br>
 </br>
 
-<div style="font-size:24px;">Current Squeezoor:</div>
-<div style="font-family: monospace;white-space: pre-line;"><%= TickerSnapshot.instance_method(:squeeze_score).source.gsub("def squeeze_score\n", '').gsub('end', '') %></div>
-</br>
-
 <table> 
   <thead>
     <tr>
       <th>Symbol</th>
-      <th>Squeezoor 🍋💦💰</th>
+      <th>Is Squeeze? 🍋💦</th>
+      <th>Squeezoor 🎯</th>
+      <th>short ratio score</th>
+      <th>short float score</th>
+      <th>volume score</th>
+      <th>volatility score</th>
       <th>Date</th>
       <th>Short Ratio</th>
       <th>Short Float</th>
@@ -24,7 +25,12 @@
     <% @ticker_info.each do |ti| %>
       <tr>
         <td style="font-weight:bold;"><a href="https://finance.yahoo.com/quote/<%= ti.symbol %>/"><%= ti.symbol %></a></td>
+        <td><%= ti.is_squeeze? ? "✔️" : "❌" %></td>
         <td style="font-weight:bold;"><%= ti.squeeze_score.truncate(2) %></td>
+        <td><%= ti.short_ratio_score.truncate(2) %></td>
+        <td><%= ti.short_float_score.truncate(2) %></td>
+        <td><%= ti.volume_score.truncate(2) %></td>
+        <td><%= ti.volatility_score.truncate(2) %></td>
         <td><%= ti.created_at.in_time_zone("Mountain Time (US & Canada)").to_date %></td>
         <td><%= ti.short_ratio %></td>
         <td><%= ti.short_float %></td>
